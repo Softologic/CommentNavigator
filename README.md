@@ -80,8 +80,8 @@ Comment Navigator scans your Pascal source files for specially formatted comment
 ## Installation
 
 1. Clone or download this repository
-2. Open CommentNavPkg.dpk in Delphi IDE
-3. Right-click the project in Project Manager → **Install**
+2. Open CommentNavigator.dpk in Delphi IDE
+3. Right-click the project in Project Manager → **Compile** → **Install**
 4. Access via menu: **View → Comment Navigator**
 
 ## Quick Start
