@@ -17,7 +17,7 @@
 {       License: MIT                                    }
 {                                                       }
 {*******************************************************}
-
+ 
 unit CommentNav.Settings;
 
 interface
