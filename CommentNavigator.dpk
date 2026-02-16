@@ -1,0 +1,45 @@
+﻿package CommentNavigator;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$DESIGNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  designide,
+  VclSmp;
+
+contains
+  CommentNav.Frame in 'CommentNav.Frame.pas' {CommentNavFrame: TFrame},
+  CommentNav.DockForm in 'CommentNav.DockForm.pas',
+  CommentNav.Settings in 'CommentNav.Settings.pas' {frmCommentNavSettings},
+  CommentNav.Expert in 'CommentNav.Expert.pas',
+  CommentNav.InsertComment in 'CommentNav.InsertComment.pas';
+
+
+end.
