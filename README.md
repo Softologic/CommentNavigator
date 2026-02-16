@@ -164,7 +164,7 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## Author
 
-**Oleg Granishevskii**
+**Oleg Granishevskii & Claude 4.6 Opus**
 
 ---
 
