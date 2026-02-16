@@ -101,7 +101,7 @@ Comment Navigator scans your Pascal source files for specially formatted comment
 
 | File | Description |
 |---|---|
-| CommentNavPkg.dpk | Design-time package |
+| CommentNavigator.dpk | Design-time package |
 | CommentNav.Expert.pas | Expert registration, menu item |
 | CommentNav.DockForm.pas | Dockable form, IDE notifiers, file polling |
 | CommentNav.Frame.pas | Main UI frame — ListView, scanning, navigation |
