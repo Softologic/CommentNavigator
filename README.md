@@ -164,7 +164,7 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## Author
 
-**Oleg Granishevsky**
+**Oleg Granishevskii**
 
 ---
 
