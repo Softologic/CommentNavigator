@@ -11,7 +11,7 @@
 {       - Auto-scan on module switch                    }
 {       - Editor modification detection                 }
 {                                                       }
-{       Author: Oleg Granishevsky & Claude 4.6 Opus	    }
+{       Author: Oleg Granishevskii & Claude 4.6 Opus	    }
 {       Version: 1.0                                    }
 {       License: MIT                                    }
 {                                                       }
@@ -165,7 +165,6 @@ begin
   CurrentFile := GetCurrentActiveFile;
   if CurrentFile = '' then Exit;
 
-  // Переключение файла
   if not SameText(CurrentFile, FLastFile) then
   begin
     FLastFile := CurrentFile;
@@ -174,17 +173,14 @@ begin
     Exit;
   end;
 
-  // Автообновление при редактировании
   IsModified := IsCurrentModuleModified;
   if IsModified and not FWasModified then
   begin
-    // Файл только что стал Modified — пересканируем буфер
     FWasModified := True;
     CommentNavFrame.ScanCurrentEditorBuffer;
   end
   else if not IsModified and FWasModified then
   begin
-    // Файл сохранён (Modified сброшен) — пересканируем
     FWasModified := False;
     CommentNavFrame.ScanCurrentEditorBuffer;
   end;

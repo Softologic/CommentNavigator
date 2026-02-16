@@ -77,11 +77,9 @@ begin
   S := Trim(ALine);
   IncludeClass := CommentNavSettings.InsertClassName;
 
-  // Убираем class prefix если есть
   if Copy(AnsiLowerCase(S), 1, 6) = 'class ' then
     Delete(S, 1, 6);
 
-  // Определяем тип и убираем ключевое слово
   if Copy(AnsiLowerCase(S), 1, 10) = 'procedure ' then
     Delete(S, 1, 10)
   else if Copy(AnsiLowerCase(S), 1, 9) = 'function ' then
@@ -120,7 +118,6 @@ begin
   end
   else
   begin
-    // Простая функция без класса
     EndPos := 1;
     while (EndPos <= Length(S)) and
           not CharInSet(S[EndPos], ['(', ':', ';', ' ']) do
@@ -145,7 +142,6 @@ var
   Module: IOTAModule;
   SourceEditor: IOTASourceEditor;
 begin
-  // Получаем текущий редактор
   if not Supports(BorlandIDEServices, IOTAModuleServices, ModuleServices) then Exit;
   Module := ModuleServices.CurrentModule;
   if Module = nil then Exit;
@@ -162,17 +158,14 @@ begin
   Buffer := EditView.Buffer;
   if Buffer = nil then Exit;
 
-  // Получаем текущую позицию курсора
   EditPos := EditView.CursorPos;
   LineNum := EditPos.Line;
 
-  // Читаем текст строки
   EditView.Position.Move(LineNum, 1);
   EditView.Position.MoveBOL;
   CharPos.Line := LineNum;
   CharPos.CharIndex := 0;
 
-  // Получаем текст строки через Reader
   LineText := '';
   begin
     var Reader: IOTAEditReader;
@@ -185,11 +178,8 @@ begin
 
     EditView.ConvertPos(True, EditPos, CharPos);
 
-    // Находим начало строки — ищем от CharPos назад
-    // Проще: читаем блок и парсим
     LineOffset := EditView.CharPosToPos(CharPos);
 
-    // Читаем от начала строки
     CharPos.CharIndex := 0;
     LineOffset := EditView.CharPosToPos(CharPos);
 
@@ -198,7 +188,6 @@ begin
     if BytesRead > 0 then
     begin
       SetLength(LineBuf, BytesRead);
-      // Берём до конца строки
       i := Pos(#13, string(LineBuf));
       if i = 0 then
         i := Pos(#10, string(LineBuf));
@@ -209,11 +198,9 @@ begin
     end;
   end;
 
-  // Извлекаем имя метода
   MethodName := ExtractMethodName(LineText);
   if MethodName = '' then Exit;
 
-  // Определяем отступ
   Indent := '';
   for i := 1 to Length(LineText) do
   begin
@@ -225,7 +212,6 @@ begin
       Break;
   end;
 
-  // Формируем блок комментария
   SepChar := GetSeparatorChar;
   SepWidth := CommentNavSettings.SeparatorWidth;
   SepLine := '//' + StringOfChar(SepChar, SepWidth);
@@ -234,7 +220,6 @@ begin
            Indent + '// ' + MethodName + #13#10 +
            Indent + SepLine + #13#10;
 
-  // Вставляем перед текущей строкой
   CharPos.Line := LineNum;
   CharPos.CharIndex := 0;
   InsertOffset := EditView.CharPosToPos(CharPos);
@@ -248,7 +233,6 @@ begin
     Writer := nil;
   end;
 
-  // Восстанавливаем позицию курсора (сдвинулась на 3 строки вниз)
   EditPos.Line := LineNum + 3;
   EditView.CursorPos := EditPos;
   EditView.Paint;

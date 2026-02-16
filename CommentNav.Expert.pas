@@ -10,7 +10,7 @@
 {       - Register keyboard binding                     }
 {       - Register entry point for IDE                  }
 {                                                       }
-{       Author: Oleg Granishevsky & Claude 4.6 Opus	    }
+{       Author: Oleg Granishevskii & Claude 4.6 Opus	  }
 {       Version: 1.0                                    }
 {       License: MIT                                    }
 {                                                       }
@@ -55,13 +55,10 @@ var
 begin
   inherited Create;
 
-  // Инициализируем настройки
   CommentNavSettings;
 
-  // Регистрируем dockable форму и notifier
   RegisterCommentNavigatorForm;
 
-  // Добавляем пункт меню View -> Comment Navigator
   if Supports(BorlandIDEServices, INTAServices, NTAServices) then
   begin
     MainMenu := NTAServices.MainMenu;

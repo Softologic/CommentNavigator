@@ -10,7 +10,7 @@
 {       - Sort by line number, text, or group           }
 {       - Real-time search filtering                    }
 {       - Navigate to source line in IDE editor         }
-{       - Scan modes: Rules, All //, All {}             }
+{       - Scan modes: Rules, All slash, All fig.        }
 {       - Collapsible group headers                     }
 {                                                       }
 {       Author: Oleg Granishevsky & Claude 4.6 Opus	    }
